@@ -1,10 +1,11 @@
 <img src="img/Screenshot_1.png" align="center"></img>
 
+<h1 align="center">Alura Frame</h1>
+<p>Projeto <strong>ES6+/MVC/OOP</strong></p>
+
 <p align="center">
 <img  src="https://img.shields.io/github/last-commit/tilucast/alura-frame?style=plastic"></img>
-
 <img  src="https://img.shields.io/badge/ESLint-6.0.1-blue"></img>
-
 </p>
 
 # Instalação
