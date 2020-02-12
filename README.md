@@ -1,4 +1,4 @@
-<img src="Screenshot_1.png" align="center"></img>
+<img src="img/Screenshot_1.png" align="center"></img>
 
 <img  src="https://img.shields.io/github/last-commit/tilucast/alura-frame?style=plastic" align="center"></img>
 
