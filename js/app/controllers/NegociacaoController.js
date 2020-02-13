@@ -30,7 +30,7 @@ class NegociacaoController {
       this._mensagemView._update(this._mensagem);
       this._negociacoesView._update(this._listaNegociacoes);
 
-      setTimeout(this._retirarMensagem, 2000);
+      setTimeout(() => this._retirarMensagem(), 2000);
 
       this._limparForm();
     });
@@ -50,8 +50,7 @@ class NegociacaoController {
   }
 
   _retirarMensagem() {
-    const msg = document.querySelector('#mensagemView');
-    msg.innerHTML = '';
+    this._$('#mensagemView').innerHTML = '';
   }
 }
 const negociacaoController = new NegociacaoController();
