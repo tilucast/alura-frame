@@ -1,16 +1,16 @@
 class NegociacaoController {
   constructor() {
     this._$ = document.querySelector.bind(document);
-    /* this._inputData = $('#data');
-        this._inputQuantidade = $('#quantidade');
-        this._inputValor = $('#valor'); */
 
     const form = (this._form = this._$('.form'));
     this._dataFocus = this._$('#data');
     this._data = form.data;
     this._quantidade = form.quantidade;
     this._valor = form.valor;
-    this._listaNegociacoes = new ListaNegociacoes();
+
+    this._listaNegociacoes = new ListaNegociacoes(model =>
+      this._negociacoesView._update(model)
+    );
 
     this._negociacoesView = new NegociacoesView(this._$('#negociacoesView'));
     this._negociacoesView._update(this._listaNegociacoes);
@@ -28,7 +28,6 @@ class NegociacaoController {
       this._mensagem.text = 'Negociação adicionada com sucesso!';
 
       this._mensagemView._update(this._mensagem);
-      this._negociacoesView._update(this._listaNegociacoes);
 
       setTimeout(() => this._retirarMensagem(), 2000);
 
@@ -44,6 +43,16 @@ class NegociacaoController {
     );
   }
 
+  _retirarNegociacao() {
+    this._$('#apagar').addEventListener('click', () => {
+      this._listaNegociacoes.esvaziaNegociacoes();
+
+      this._mensagem.text = 'Lista de negociações apagada.';
+      this._mensagemView._update(this._mensagem);
+      setTimeout(() => this._retirarMensagem(), 2000);
+    });
+  }
+
   _limparForm() {
     this._form.reset();
     this._dataFocus.focus();
@@ -55,3 +64,4 @@ class NegociacaoController {
 }
 const negociacaoController = new NegociacaoController();
 negociacaoController.adiciona();
+negociacaoController._retirarNegociacao();
