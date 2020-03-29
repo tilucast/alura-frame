@@ -9,5 +9,14 @@ class Mensagem {
 
   set text(text) {
     this._text = text;
+    this._setTimeOutMsg();
+  }
+
+  _retirarMensagem() {
+    document.querySelector('#mensagemView').innerHTML = '';
+  }
+
+  _setTimeOutMsg() {
+    setTimeout(() => this._retirarMensagem(), 2000);
   }
 }

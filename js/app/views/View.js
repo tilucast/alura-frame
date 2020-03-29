@@ -9,7 +9,7 @@ class View {
     );
   }
 
-  _update(model) {
+  update(model) {
     this._elemento.innerHTML = this.template(model);
   }
 }

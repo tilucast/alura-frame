@@ -1,5 +1,5 @@
 .alerta {
-
+    border-radius: 5px;
     animation: alertaMensagem 2s linear;
 }
 

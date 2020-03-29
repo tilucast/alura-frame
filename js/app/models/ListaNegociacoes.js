@@ -1,12 +1,10 @@
 class ListaNegociacoes {
-  constructor(trap) {
+  constructor() {
     this._negociacoes = [];
-    this._armadilha = trap;
   }
 
   adicionaNegociacoes(negociacao) {
     this._negociacoes.push(negociacao);
-    this._armadilha(this);
   }
 
   get negociacoes() {
@@ -15,6 +13,17 @@ class ListaNegociacoes {
 
   esvaziaNegociacoes() {
     this._negociacoes = [];
-    this._armadilha(this);
+  }
+
+  ordenarLista(criterio) {
+    this._negociacoes.sort(criterio);
+  }
+
+  inverterLista() {
+    this._negociacoes.reverse();
+  }
+
+  get volumeTotal() {
+    return this._negociacoes.reduce((total, n) => total + n.volume, 0);
   }
 }

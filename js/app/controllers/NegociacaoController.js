@@ -8,30 +8,53 @@ class NegociacaoController {
     this._quantidade = form.quantidade;
     this._valor = form.valor;
 
-    this._listaNegociacoes = new ListaNegociacoes(model =>
-      this._negociacoesView._update(model)
+    this._ordem = '';
+
+    this._listaNegociacoes = new Bind(
+      new ListaNegociacoes(),
+      new NegociacoesView(this._$('#negociacoesView')),
+      'adicionaNegociacoes',
+      'esvaziaNegociacoes',
+      'ordenarLista',
+      'inverterLista'
     );
 
-    this._negociacoesView = new NegociacoesView(this._$('#negociacoesView'));
-    this._negociacoesView._update(this._listaNegociacoes);
-
-    this._mensagem = new Mensagem();
-    this._mensagemView = new MensagemView(this._$('#mensagemView'));
+    this._mensagem = new Bind(
+      new Mensagem(),
+      new MensagemView(this._$('#mensagemView')),
+      'text'
+    );
   }
 
-  adiciona() {
+  adicionarNegociacao() {
     this._form.addEventListener('submit', event => {
       event.preventDefault();
 
-      this._listaNegociacoes.adicionaNegociacoes(this._criarNegociacao());
-
-      this._mensagem.text = 'Negociação adicionada com sucesso!';
-
-      this._mensagemView._update(this._mensagem);
-
-      setTimeout(() => this._retirarMensagem(), 2000);
+      try {
+        this._listaNegociacoes.adicionaNegociacoes(this._criarNegociacao());
+        this._mensagem.text = 'Negociação adicionada com sucesso!';
+      } catch (err) {
+        this._mensagem.text = err
+      }
 
       this._limparForm();
+    });
+  }
+
+  importarNegociacoes() {
+    const importbtn = this._$('#importbtn');
+    importbtn.addEventListener('click', () => {
+      const importarNegociacoes = new ImportarNegociacoes();
+      importarNegociacoes
+        .obterNegociacoes()
+        .then(negociacoes => {
+          //console.log(negociacoes);
+          negociacoes.forEach(negociacao =>
+            this._listaNegociacoes.adicionaNegociacoes(negociacao)
+          );
+          this._mensagem.text = 'Negociações importadas com sucesso!';
+        })
+        .catch(error => (this._mensagem.text = error));
     });
   }
 
@@ -45,23 +68,29 @@ class NegociacaoController {
 
   _retirarNegociacao() {
     this._$('#apagar').addEventListener('click', () => {
+      if (this._listaNegociacoes.negociacoes.length === 0) {
+        return;
+      }
       this._listaNegociacoes.esvaziaNegociacoes();
-
-      this._mensagem.text = 'Lista de negociações apagada.';
-      this._mensagemView._update(this._mensagem);
-      setTimeout(() => this._retirarMensagem(), 2000);
+      this._mensagem.text = 'Lista de negociações apagada!';
     });
+  }
+
+  ordenarNegociacoes(column) {
+    if (this._ordem === column) {
+      this._listaNegociacoes.inverterLista();
+    } else {
+      this._listaNegociacoes.ordenarLista((a, b) => a[column] - b[column]);
+    }
+    this._ordem = column;
   }
 
   _limparForm() {
     this._form.reset();
     this._dataFocus.focus();
   }
-
-  _retirarMensagem() {
-    this._$('#mensagemView').innerHTML = '';
-  }
 }
 const negociacaoController = new NegociacaoController();
-negociacaoController.adiciona();
+negociacaoController.adicionarNegociacao();
 negociacaoController._retirarNegociacao();
+negociacaoController.importarNegociacoes();
