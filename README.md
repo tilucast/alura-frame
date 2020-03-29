@@ -10,7 +10,21 @@
 
 # Instalação
 
-É um projeto simples, feito com HTML/CSS/Javascript. Apenas baixe os arquivos e abra **index.html**;
+Baixe os arquivos, entre na pasta **server** e execute em sua cmd:
+
+```
+npm install
+```
+
+Esse comando irá instalar as dependências necessárias para rodar o servidor.
+Após concluído o download, abra sua cmd e digite:
+
+```
+npm start
+```
+
+Já este comando irá inicializar o servidor na porta **3000**. E é isso, abra em seu navegador **localhost:3000** e terá o projeto rodando em sua máquina.
+
 Entretanto, estou usando uma configuração do <a href="https://eslint.org/">ESLint</a> com o <a href="https://prettier.io/">Prettier</a>; configuração esta feita pelo desenvolvedor <a href="https://github.com/wesbos">wesbos</a>.
 Link do repositório explicando como usar essa configuração:
 <a href="https://github.com/wesbos/eslint-config-wesbos">No-Sweat™ Eslint and Prettier Setup - with or without VS Code</a>.
@@ -29,4 +43,5 @@ Não são muitas, porém dentre elas:
 <li>Modifiquei a forma como chamamos o listener do formulário. No projeto original, o guia chama o listener pelo HTML, já aqui eu chamo pelo próprio Javascript. (Preferência minha!)</li>
 <li>Algumas modificações em estilização.</li>
 <li>Adicionei um método que remove a notificação de negociação adicionada com sucesso.</li>
-<li>Visto que o curso foi dividido em 3 partes, assim que eu fizer tais partes, vou commita-las neste repositório, junto com minhas modificações.</li>
+<li>Algumas modificações menores foram feitas, como trocar .then e .catch por async/await.</li>
+<li>Visto que o curso foi dividido em 3 partes, (a segunda parte já está upada) . Assim que eu fizer a última parte, vou commita-la neste repositório, junto com minhas modificações.</li>
