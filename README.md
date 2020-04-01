@@ -35,6 +35,7 @@ Link do repositório explicando como usar essa configuração:
 Este projeto usa o modelo **MVC**, com **OOP**, além de muitas features novas do ES6+.
 
 O guia deste projeto é : <a href="https://github.com/flaviohenriquealmeida">Flávio Henrique de Souza Almeida</a>.
+Existem muitos intrutores nos fóruns da alura, mas este rapaz <a href="https://github.com/mahenrique94">Matheus Castiglioni</a> me ajudou bastante. Valeu !
 
 # Modificações
 
@@ -44,4 +45,5 @@ Não são muitas, porém dentre elas:
 <li>Algumas modificações em estilização.</li>
 <li>Adicionei um método que remove a notificação de negociação adicionada com sucesso.</li>
 <li>Algumas modificações menores foram feitas, como trocar .then e .catch por async/await.</li>
+<li>Adicionei exclusão de negociação única ( com ajuda do rapaz descrito ali em cima. )</li>
 <li>Visto que o curso foi dividido em 3 partes, (a segunda parte já está upada) . Assim que eu fizer a última parte, vou commita-la neste repositório, junto com minhas modificações.</li>
