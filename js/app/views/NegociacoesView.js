@@ -14,13 +14,13 @@ class NegociacoesView extends View {
             <tbody class="table-body">
                 ${model.negociacoes
                   .map(
-                    n => `
+                    (n, i)=> `
                     <tr>
                         <td>${DateHelper.dateToText(n.data)}</td>
                         <td>${n.quantidade}</td>
                         <td>${n.valor}</td>
                         <td>${n.volume}</td>
-                        <td>X</td>
+                        <td data-index="${i}" onclick="negociacaoController.removerNegociacao(this)">X</td>
                     </tr>
                     
                 `

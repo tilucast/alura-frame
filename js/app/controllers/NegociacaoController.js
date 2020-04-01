@@ -16,7 +16,8 @@ class NegociacaoController {
       'adicionaNegociacoes',
       'esvaziaNegociacoes',
       'ordenarLista',
-      'inverterLista'
+      'inverterLista',
+      'removeNegociacao'
     );
 
     this._mensagem = new Bind(
@@ -66,7 +67,7 @@ class NegociacaoController {
     );
   }
 
-  _retirarNegociacao() {
+  retirarNegociacoes() {
     this._$('#apagar').addEventListener('click', () => {
       if (this._listaNegociacoes.negociacoes.length === 0) {
         return;
@@ -85,6 +86,13 @@ class NegociacaoController {
     this._ordem = column;
   }
 
+  removerNegociacao(td) {
+    const index = td.dataset.index
+    if (index >= 0) {
+      this._listaNegociacoes.removeNegociacao(index)
+    }
+  }
+
   _limparForm() {
     this._form.reset();
     this._dataFocus.focus();
@@ -92,5 +100,5 @@ class NegociacaoController {
 }
 const negociacaoController = new NegociacaoController();
 negociacaoController.adicionarNegociacao();
-negociacaoController._retirarNegociacao();
+negociacaoController.retirarNegociacoes();
 negociacaoController.importarNegociacoes();

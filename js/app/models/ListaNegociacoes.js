@@ -23,6 +23,12 @@ class ListaNegociacoes {
     this._negociacoes.reverse();
   }
 
+  removeNegociacao(index) {
+    //const novaLista = [...this._negociacoes]
+    this._negociacoes.splice(index, 1)
+    //this._negociacoes = novaLista
+  }
+
   get volumeTotal() {
     return this._negociacoes.reduce((total, n) => total + n.volume, 0);
   }
