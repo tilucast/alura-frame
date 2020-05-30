@@ -1,8 +1,31 @@
-class Bind {
-  constructor(model, view, ...props) {
-    const proxy = ProxyFactory.create(model, props, acao => view.update(model));
-    view.update(model);
+"use strict";
 
-    return proxy;
-  }
-}
+System.register(["../services/ProxyFactory.js"], function (_export, _context) {
+  "use strict";
+
+  var ProxyFactory, Bind;
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  return {
+    setters: [function (_servicesProxyFactoryJs) {
+      ProxyFactory = _servicesProxyFactoryJs.default;
+    }],
+    execute: function () {
+      _export("default", Bind = function Bind(model, view) {
+        _classCallCheck(this, Bind);
+
+        for (var _len = arguments.length, props = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+          props[_key - 2] = arguments[_key];
+        }
+
+        const proxy = ProxyFactory.create(model, props, function (acao) {
+          return view.update(model);
+        });
+        view.update(model);
+        return proxy;
+      });
+    }
+  };
+});
+//# sourceMappingURL=Bind.js.map

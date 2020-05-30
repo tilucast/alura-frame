@@ -16,7 +16,7 @@ var negociacoes = [
       { data : dataAnterior, quantidade : 3, valor : 650},
       { data : dateRetrasada, quantidade : 1, valor : 750},
       { data : dateRetrasada, quantidade : 2, valor : 950},
-      { data : dateRetrasada, quantidade : 3, valor : 950}
+      { data : dateRetrasada, quantidade : 3, valor : 950},
     ];
 
 

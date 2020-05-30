@@ -1,12 +1,35 @@
 {
-  "name": "client",
+  "name": "alura-frame",
   "version": "1.0.0",
-  "description": "Projeto da Alura",
+  "description": "<img src=\"img/Screenshot_1.png\" align=\"center\"></img>",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel js/app-es6+ -d js/app --source-maps",
+    "watch": "babel js/app-es6+ -d js/app --source-maps --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tilucast/alura-frame.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tilucast/alura-frame/issues"
+  },
+  "homepage": "https://github.com/tilucast/alura-frame#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-transform-arrow-functions": "^7.8.3",
+    "@babel/plugin-transform-async-to-generator": "^7.8.3",
+    "@babel/plugin-transform-modules-systemjs": "^7.9.6",
+    "@babel/preset-env": "^7.9.6"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.8.7",
+    "core-js": "^3.6.5",
+    "core-js-pure": "^3.6.5",
+    "systemjs": "^6.3.1"
+  }
 }

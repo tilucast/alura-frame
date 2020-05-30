@@ -1,9 +1,9 @@
 "use strict";
 
-System.register([], function (_export, _context) {
+System.register(["./ImportarNegociacoes.js", "../models/Negociacao.js"], function (_export, _context) {
   "use strict";
 
-  var HttpService;
+  var ImportarNegociacoes, Negociacao, FiltrarNegociacoes;
 
   function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -16,62 +16,47 @@ System.register([], function (_export, _context) {
   function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
   return {
-    setters: [],
+    setters: [function (_ImportarNegociacoesJs) {
+      ImportarNegociacoes = _ImportarNegociacoesJs.default;
+    }, function (_modelsNegociacaoJs) {
+      Negociacao = _modelsNegociacaoJs.default;
+    }],
     execute: function () {
-      _export("default", HttpService = /*#__PURE__*/function () {
-        function HttpService() {
-          _classCallCheck(this, HttpService);
+      _export("default", FiltrarNegociacoes = /*#__PURE__*/function () {
+        function FiltrarNegociacoes() {
+          _classCallCheck(this, FiltrarNegociacoes);
+
+          this._importarNegociacoes = new ImportarNegociacoes();
         }
 
-        _createClass(HttpService, [{
-          key: "get",
+        _createClass(FiltrarNegociacoes, [{
+          key: "filtrar",
           value: function () {
-            var _get = _asyncToGenerator(function* (url) {
+            var _filtrar = _asyncToGenerator(function* (listaNegociacao) {
               try {
-                const Fetch = yield fetch(url);
-                return Fetch.json();
-              } catch (err) {
-                console.log(err);
-                throw new Error(err);
-              }
-            });
-
-            function get(_x) {
-              return _get.apply(this, arguments);
-            }
-
-            return get;
-          }()
-        }, {
-          key: "post",
-          value: function () {
-            var _post = _asyncToGenerator(function* (url, dado) {
-              try {
-                const response = yield fetch(url, {
-                  method: 'POST',
-                  headers: {
-                    'Content-type': 'application/json'
-                  },
-                  body: JSON.stringify(dado)
+                const obterNegociacoes = yield this._importarNegociacoes.obterNegociacoes();
+                let resultado = obterNegociacoes.filter(function (negociacao) {
+                  return !listaNegociacao.negociacoes.some(function (negociacaoExistente) {
+                    return Negociacao.isEquals(negociacaoExistente, negociacao);
+                  });
                 });
-                return response.json();
+                return resultado;
               } catch (err) {
-                console.log(err);
-                throw new Error('Erro ao incluir negociação na API.');
+                throw new Error("Erro ao filtrar as negociações");
               }
             });
 
-            function post(_x2, _x3) {
-              return _post.apply(this, arguments);
+            function filtrar(_x) {
+              return _filtrar.apply(this, arguments);
             }
 
-            return post;
+            return filtrar;
           }()
         }]);
 
-        return HttpService;
+        return FiltrarNegociacoes;
       }());
     }
   };
 });
-//# sourceMappingURL=HttpService.js.map
+//# sourceMappingURL=FiltrarNegociacoes.js.map

@@ -10,13 +10,15 @@
 
 # Instalação
 
-Baixe os arquivos, entre na pasta **server** e execute em sua cmd:
+Na pasta inicial , digite em sua cmd :
 
 ```
 npm install
 ```
 
-Esse comando irá instalar as dependências necessárias para rodar o servidor.
+Esse comando irá instalar as dependências necessárias para rodar o projeto.
+Faça o mesmo na pasta **/server**
+
 Após concluído o download, abra sua cmd e digite:
 
 ```
@@ -25,9 +27,13 @@ npm start
 
 Já este comando irá inicializar o servidor na porta **3000**. E é isso, abra em seu navegador **localhost:3000** e terá o projeto rodando em sua máquina.
 
-Entretanto, estou usando uma configuração do <a href="https://eslint.org/">ESLint</a> com o <a href="https://prettier.io/">Prettier</a>; configuração esta feita pelo desenvolvedor <a href="https://github.com/wesbos">wesbos</a>.
-Link do repositório explicando como usar essa configuração:
-<a href="https://github.com/wesbos/eslint-config-wesbos">No-Sweat™ Eslint and Prettier Setup - with or without VS Code</a>.
+Para fazer modificações no projeto, vá na pasta principal **(app-es6+)** e digite :
+
+````
+npm run watch
+````
+Esse comando irá fazer com que o babel 'observe' as modificações feitas na pasta **app-es6+** e transpile o código para a pasta app, que é a pasta que o navegador vai usar para rodar o projeto.
+
 
 # Sobre o projeto
 
@@ -39,11 +45,11 @@ Existem muitos intrutores nos fóruns da alura, mas este rapaz <a href="https://
 
 # Modificações
 
-Não são muitas, porém dentre elas:
+Modifiquei basicamente o projeto inteiro.
 
-<li>Modifiquei a forma como chamamos o listener do formulário. No projeto original, o guia chama o listener pelo HTML, já aqui eu chamo pelo próprio Javascript. (Preferência minha!)</li>
-<li>Algumas modificações em estilização.</li>
-<li>Adicionei um método que remove a notificação de negociação adicionada com sucesso.</li>
-<li>Algumas modificações menores foram feitas, como trocar .then e .catch por async/await.</li>
-<li>Adicionei exclusão de negociação única ( com ajuda do rapaz descrito ali em cima. )</li>
-<li>Visto que o curso foi dividido em 3 partes, (a segunda parte já está upada) . Assim que eu fizer a última parte, vou commita-la neste repositório, junto com minhas modificações.</li>
+# Observações
+
+Existem códigos comentados em alguns arquivos. Esses códigos são de uma funcionalidade de exclusão única que eu tentei fazer. Não consegui. a documentação do IndexedDB da Mozilla é uma porcaria, então vou deixar comentado até que um dia eu consiga resolver. Entretanto, existe a opção de excluir individualmente as negociações do DOM e da referênca na array, exclusão essa que altera o valor total das negociações.
+
+Existe um bug ao importar as negociações ao iniciar o servidor pela primeira vez já contendo negociações no IndexedDB. Esse bug acontece por que a função de filtrar as negociações só observa as negociações importadas, e caso já existam negociações no Index, o filtro vai permitir que as negociações sejam duplicadas.
+
